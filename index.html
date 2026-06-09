@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diether Eraldo</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+    (function(){
+        emailjs.init({ publicKey:"sw3UvuMynGpNugsss" });
+    })();
+    </script>
+
+<style>
+    /* ── Hero layout ── */
+    .hero {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 2rem !important;
+        flex-wrap: wrap !important;
+    }
+    .hero-image {
+        flex: 1 !important;
+        min-width: 300px !important;
+        max-width: 450px !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+    .hero-image img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 12px !important;
+    }
+    .hero-content {
+        flex: 1 !important;
+        min-width: 300px !important;
+        position: relative !important;
+        background: linear-gradient(135deg, #1c1e22 0%, #2a2d35 60%, #35383f 100%) !important;
+        padding: 3rem 2.5rem !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        z-index: 1 !important;
+        border: 1px solid rgba(176, 168, 185, 0.18) !important;
+        box-shadow: 0 12px 48px rgba(10,10,14,0.3) !important;
+    }
+    .hero-content::after {
+        content: "" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        background-image: url('SAVE_20210929_101453.jpg') !important;
+        background-size: cover !important;
+        background-position: right center !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, transparent 30%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.6) 100%) !important;
+        mask-image: linear-gradient(to right, transparent 0%, transparent 30%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.6) 100%) !important;
+        mix-blend-mode: luminosity !important;
+        opacity: 0.55 !important;
+        z-index: 0 !important;
+        border-radius: 24px !important;
+        pointer-events: none !important;
+    }
+    .hero-content::before {
+        content: "" !important;
+        position: absolute !important;
+        top: -60px !important; right: -60px !important;
+        width: 260px !important; height: 260px !important;
+        background: radial-gradient(circle, rgba(176,168,185,0.18) 0%, transparent 70%) !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+    }
+    .hero-content h2,
+    .hero-content p,
+    .hero-content .hero-btn {
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    .hero-content h2 {
+        color: #f0eef4 !important;
+        font-size: 52px !important;
+        font-weight: 800 !important;
+        line-height: 1.15 !important;
+        letter-spacing: -1px !important;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+        text-shadow: 0 2px 16px rgba(0,0,0,0.45) !important;
+    }
+    .hero-content p {
+        color: #b0a8b9 !important;
+        font-size: 18px !important;
+        line-height: 1.7 !important;
+        margin-bottom: 36px !important;
+        max-width: 420px !important;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.5) !important;
+    }
+    .hero-content .hero-btn {
+        background: #b0a8b9 !important;
+        color: #1c1e22 !important;
+        font-weight: 800 !important;
+        letter-spacing: 1px !important;
+        padding: 16px 28px !important;
+        width: auto !important;
+        display: inline-flex !important;
+        align-self: flex-start !important;
+        width: fit-content !important;
+        font-size: 13px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 20px rgba(176,168,185,0.3) !important;
+        transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease !important;
+        text-decoration: none !important;
+    }
+    .hero-content .hero-btn:hover {
+        background: #f0eef4 !important;
+        color: #1c1e22 !important;
+        box-shadow: 0 8px 28px rgba(240,238,244,0.35) !important;
+        transform: translateY(-3px) !important;
+    }
+    .skills-grid, .services-grid, .projects-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 1.5rem !important;
+    }
+    .skill-card, .service-card, .project-card {
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+    }
+
+    /* ── Scroll progress container & bar ── */
+    .scroll-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(28, 30, 34, 0.05);
+        z-index: 10000;
+        pointer-events: none;
+    }
+    #scroll-progress {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #b0a8b9 0%, #f0eef4 50%, #b0a8b9 100%);
+        background-size: 200% auto;
+        border-radius: 0 4px 4px 0;
+        box-shadow: 0 0 10px rgba(176, 168, 185, 0.6);
+        will-change: width;
+        transition: width 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── Nav shrink ── */
+    nav {
+        transition: padding 0.4s ease, box-shadow 0.4s ease !important;
+    }
+    nav.scrolled {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        box-shadow: 0 4px 24px rgba(28,30,34,0.4) !important;
+    }
+
+    /* ── Reveal animation ── */
+    .sa-hide {
+        opacity: 0;
+        transform: translateY(36px);
+        transition: opacity 0.65s cubic-bezier(.22,1,.36,1),
+                    transform 0.65s cubic-bezier(.22,1,.36,1);
+    }
+    .sa-hide.sa-left  { transform: translateX(-48px); }
+    .sa-hide.sa-right { transform: translateX(48px); }
+    .sa-hide.sa-scale { transform: scale(0.91) translateY(16px); }
+    .sa-hide.sa-show  { opacity: 1 !important; transform: translate(0,0) scale(1) !important; }
+    .sa-d1 { transition-delay: 0.06s !important; }
+    .sa-d2 { transition-delay: 0.13s !important; }
+    .sa-d3 { transition-delay: 0.20s !important; }
+    .sa-d4 { transition-delay: 0.27s !important; }
+    .sa-d5 { transition-delay: 0.34s !important; }
+
+    /* ── Hero slide-in on load ── */
+    .hero-image {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s 0.1s cubic-bezier(.22,1,.36,1),
+                    transform 0.8s 0.1s cubic-bezier(.22,1,.36,1) !important;
+    }
+    .hero-image.sa-show { opacity: 1 !important; transform: translateX(0) !important; }
+    .hero-content {
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.8s 0.3s cubic-bezier(.22,1,.36,1),
+                    transform 0.8s 0.3s cubic-bezier(.22,1,.36,1) !important;
+    }
+    .hero-content.sa-show { opacity: 1 !important; transform: translateX(0) !important; }
+
+    /* ── Profile photo float ── */
+    @keyframes floatY {
+        0%,100% { transform: translateY(0); }
+        50%      { transform: translateY(-10px); }
+    }
+    .hero-image.sa-show img {
+        animation: floatY 5s ease-in-out infinite;
+    }
+
+    /* ── Card hover lift ── */
+    .skill-card, .service-card, .project-card, .lib-project-card, .gd-project-card {
+        transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease !important;
+    }
+    .skill-card:hover, .service-card:hover, .project-card:hover, .lib-project-card:hover, .gd-project-card:hover {
+        transform: translateY(-8px) scale(1.02) !important;
+        box-shadow: 0 20px 40px rgba(30,42,56,0.13) !important;
+    }
+
+    /* ── Icon bounce on hover ── */
+    .skill-icon, .service-icon {
+        transition: transform 0.3s cubic-bezier(.22,1,.36,1) !important;
+        display: flex !important;
+    }
+    .skill-card:hover .skill-icon,
+    .service-card:hover .service-icon {
+        transform: translateY(-6px) scale(1.18) !important;
+    }
+    .about-item .icon {
+        transition: transform 0.3s ease !important;
+    }
+    .about-item:hover .icon {
+        transform: scale(1.2) rotate(12deg) !important;
+    }
+
+    /* ── Button ripple ── */
+    @keyframes sa-ripple {
+        to { transform: scale(2.8); opacity: 0; }
+    }
+
+    /* ── Page blur overlay ── */
+    #page-blur-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(12, 13, 16, 0.6);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 2000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+    #page-blur-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* ── Dynamic Main Layout Blur Lock when Modal is Active ── */
+    body.modal-open {
+        overflow: hidden !important;
+    }
+    body.modal-open nav, 
+    body.modal-open section,
+    body.modal-open #back-to-top {
+        filter: blur(8px);
+        pointer-events: none;
+        transition: filter 0.3s ease;
+    }
+
+    /* ── Breathe animation ── */
+    @keyframes breathe {
+        0%   { transform: scale(1.04); }
+        40%  { transform: scale(1.07); }
+        70%  { transform: scale(1.03); }
+        100% { transform: scale(1.05); }
+    }
+
+    /* ── Highlighted project card ── */
+    .project-card.card-spotlight {
+        position: relative;
+        z-index: 2100;
+        transform: translateY(-10px) scale(1.04) !important;
+        box-shadow: 0 32px 64px rgba(28,30,34,0.35), 0 0 0 3px #b0a8b9 !important;
+        transition: transform 0.35s cubic-bezier(.22,1,.36,1),
+                    box-shadow 0.35s ease !important;
+    }
+
+    /* ── "No page" badge ── */
+    .no-page-badge {
+        position: absolute;
+        top: 14px; right: 14px;
+        background: #b0a8b9;
+        color: #1c1e22;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.3s 0.15s ease, transform 0.3s 0.15s ease;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    .project-card.card-spotlight .no-page-badge {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ── Spotlight for ALL clickable metadata items ── */
+    .about-item, .skill-card, .service-card, .contact-item {
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease !important;
+    }
+    .item-spotlight {
+        position: relative;
+        z-index: 2100 !important;
+        animation: breathe 1.8s ease-in-out infinite !important;
+        box-shadow: 0 24px 48px rgba(28,30,34,0.2), 0 0 0 2.5px #b0a8b9 !important;
+        background: #ffffff !important;
+    }
+    .item-spotlight .icon,
+    .item-spotlight .skill-icon,
+    .item-spotlight .service-icon {
+        background: #b0a8b9 !important;
+        border-color: #8c8499 !important;
+        transform: scale(1.15) rotate(8deg) !important;
+        transition: background 0.3s ease, transform 0.3s ease !important;
+    }
+    .contact-item.item-spotlight span {
+        background: #b0a8b9 !important;
+        transform: scale(1.15) !important;
+        transition: transform 0.3s ease, background 0.3s ease !important;
+    }
+
+    /* ══════════════════════════════════════════
+       ── Library Project Card ──
+    ══════════════════════════════════════════ */
+    .lib-project-card {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 16px;
+        border: 0.5px solid #e2e2e2;
+        display: flex;
+        flex-direction: column;
+    }
+    .lib-cover {
+        position: relative;
+        height: 220px;
+        background: linear-gradient(135deg, #1a5c3a 0%, #2e7d55 40%, #4a9e6e 70%, #1b4332 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .lib-cover-bg-text {
+        position: absolute;
+        font-size: 120px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.04);
+        left: -10px; top: 10px;
+        user-select: none;
+        pointer-events: none;
+        letter-spacing: -4px;
+    }
+    .lib-phones {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
+    }
+    .lib-phone {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid rgba(255,255,255,0.25);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        background: #111;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .lib-phone img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .lib-phone.side-left  { width: 72px; height: 128px; opacity: 0.82; transform: perspective(400px) rotateY(12deg) scale(0.92); }
+    .lib-phone.center     { width: 90px; height: 152px; transform: translateY(-10px); }
+    .lib-phone.side-right { width: 72px; height: 128px; opacity: 0.82; transform: perspective(400px) rotateY(-12deg) scale(0.92); }
+    .lib-badge {
+        position: absolute;
+        top: 12px; right: 12px;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.28);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+    .lib-tag {
+        position: absolute;
+        bottom: 12px; left: 12px;
+        background: rgba(0,0,0,0.35);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,255,255,0.9);
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+
+    /* ── Library Modal ── */
+    #lib-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.65);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    #lib-modal.open { 
+        display: flex; 
+        opacity: 1;
+    }
+    .lib-modal-inner {
+        background: #fff;
+        border-radius: 20px;
+        max-width: 680px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+    }
+    #lib-modal.open .lib-modal-inner {
+        transform: scale(1);
+    }
+    .lib-modal-header {
+        background: linear-gradient(135deg, #1a5c3a 0%, #2e7d55 50%, #4a9e6e 100%);
+        padding: 28px 24px 20px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .lib-modal-header::before {
+        content: "LIBRARY";
+        position: absolute;
+        font-size: 80px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.05);
+        bottom: -10px; right: -10px;
+        pointer-events: none;
+    }
+    .lib-modal-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .lib-modal-header p  { font-size: 13px; opacity: 0.8; margin: 0; }
+    .lib-close-btn {
+        position: absolute;
+        top: 14px; right: 14px;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        border-radius: 50%;
+        width: 30px; height: 30px;
+        font-size: 20px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 2;
+    }
+    .lib-modal-body { padding: 24px; }
+    .lib-screenshots-row {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+    }
+    .lib-ss-wrap { text-align: center; }
+    .lib-ss-frame {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid #e8e8e8;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        background: #111;
+        width: 160px;
+        cursor: zoom-in;
+        transition: transform 0.25s ease;
+    }
+    .lib-ss-frame:hover {
+        transform: scale(1.04);
+    }
+    .lib-ss-frame img { display: block; width: 100%; height: auto; }
+    .lib-ss-label { font-size: 11px; color: #888; margin-top: 6px; letter-spacing: 0.5px; }
+    .lib-modal-desc { font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 18px; }
+    .lib-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lib-chip {
+        background: #eaf3ee;
+        color: #1a5c3a;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
+    }
+
+    /* ── Graphic Design Project Card ── */
+    .gd-project-card {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 16px;
+        border: 0.5px solid #e2e2e2;
+        display: flex;
+        flex-direction: column;
+    }
+    .gd-cover {
+        position: relative;
+        height: 220px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .gd-cover-bg-text {
+        position: absolute;
+        font-size: 120px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.04);
+        left: -10px; top: 10px;
+        user-select: none;
+        pointer-events: none;
+        letter-spacing: -4px;
+    }
+    .gd-phones {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        position: relative;
+        z-index: 2;
+    }
+    .gd-phone {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid rgba(255,255,255,0.25);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        background: #111;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .gd-phone img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .gd-phone.side-left  { width: 72px; height: 128px; opacity: 0.82; transform: perspective(400px) rotateY(12deg) scale(0.92); }
+    .gd-phone.center     { width: 90px; height: 152px; transform: translateY(-10px); }
+    .gd-phone.side-right { width: 72px; height: 128px; opacity: 0.82; transform: perspective(400px) rotateY(-12deg) scale(0.92); }
+    .gd-badge {
+        position: absolute;
+        top: 12px; right: 12px;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.28);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+    .gd-tag {
+        position: absolute;
+        bottom: 12px; left: 12px;
+        background: rgba(0,0,0,0.35);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,255,255,0.9);
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+
+    /* ── Graphic Design Modal ── */
+    #gd-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.72);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    #gd-modal.open { 
+        display: flex; 
+        opacity: 1;
+    }
+    .gd-modal-inner {
+        background: #f7f7f9;
+        border-radius: 20px;
+        max-width: 960px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+    }
+    #gd-modal.open .gd-modal-inner {
+        transform: scale(1);
+    }
+    .gd-modal-header {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        padding: 24px 56px 20px 24px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    .gd-modal-header::before {
+        content: "DESIGN";
+        position: absolute;
+        font-size: 70px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.04);
+        bottom: -10px; right: -10px;
+        pointer-events: none;
+        letter-spacing: -2px;
+    }
+    .gd-modal-header h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; margin-top: 0; }
+    .gd-modal-header p  { font-size: 13px; opacity: 0.75; margin: 0; }
+    .gd-close-btn {
+        position: absolute;
+        top: 14px; right: 14px;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        color: #fff;
+        border-radius: 50%;
+        width: 30px; height: 30px;
+        font-size: 20px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 2;
+        transition: background 0.2s ease;
+    }
+    .gd-close-btn:hover { background: rgba(255,255,255,0.28); }
+    
+    /* Workspace Layout Split */
+    .gd-workspace-container {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+    }
+    
+    /* Sidebar Filter Component */
+    .gd-category-sidebar {
+        width: 240px;
+        background: #ffffff;
+        border-right: 1px solid #e8e8e8;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        flex-shrink: 0;
+        overflow-y: auto;
+    }
+    .gd-sidebar-title {
+        font-size: 11px;
+        font-weight: 800;
+        color: #9590a0;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        padding-left: 8px;
+    }
+    .gd-filter-btn {
+        background: transparent;
+        border: none;
+        outline: none;
+        text-align: left;
+        padding: 10px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #5a5663;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.25s ease;
+        width: 100%;
+    }
+    .gd-filter-btn:hover {
+        background: #f2f1f4;
+        color: #1c1e22;
+        transform: none !important;
+    }
+    .gd-filter-btn.active {
+        background: #eceaf0;
+        color: #3a1f6e;
+        font-weight: 700;
+    }
+    .gd-btn-count {
+        font-size: 10px;
+        background: #f2f1f4;
+        color: #9590a0;
+        padding: 2px 6px;
+        border-radius: 6px;
+        font-weight: 700;
+    }
+    .gd-filter-btn.active .gd-btn-count {
+        background: rgba(83, 52, 131, 0.15);
+        color: #3a1f6e;
+    }
+
+    .gd-modal-body {
+        padding: 24px;
+        overflow-y: auto;
+        flex: 1;
+        background: #f7f7f9;
+    }
+    .gd-modal-desc {
+        font-size: 13px;
+        color: #555;
+        line-height: 1.85;
+        margin-bottom: 22px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid #e2e2e2;
+        margin-top: 0;
+    }
+
+    /* ── Gallery ── */
+    .gd-gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    .gd-item {
+        background: #fff;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #e8e8e8;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        transition: transform 0.4s cubic-bezier(.25,.8,.25,1), opacity 0.35s ease, cubic-bezier(.25,.8,.25,1);
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    .gd-item.hidden-filter {
+        display: none !important;
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+    }
+    .gd-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(0,0,0,0.11);
+    }
+    .gd-item img {
+        cursor: zoom-in;
+    }
+    /* Landscape: natural aspect ratio */
+    .gd-item.landscape img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    /* Portrait: 1:1 square with contain */
+    .gd-item.portrait img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+        display: block;
+        background: #f2f2f4;
+    }
+    .gd-caption {
+        font-size: 12px;
+        color: #777;
+        padding: 10px 14px;
+        margin: 0;
+        border-top: 1px solid #f0f0f2;
+        font-style: italic;
+        letter-spacing: 0.2px;
+        line-height: 1.5;
+    }
+    .gd-count-badge {
+        display: inline-block;
+        background: rgba(83,52,131,0.12);
+        color: #3a1f6e;
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 10px;
+        letter-spacing: 0.5px;
+        margin-right: 6px;
+        font-style: normal;
+    }
+
+    /* ══════════════════════════════════════════
+       ── Envelope Contact Form ──
+    ══════════════════════════════════════════ */
+
+    .envelope-wrap {
+        position: relative;
+        background: #f5f0e8;
+        border-radius: 4px 4px 6px 6px;
+        box-shadow:
+            0 2px 0 #c9bfaa,
+            0 6px 18px rgba(28, 22, 10, 0.18),
+            0 24px 48px rgba(28, 22, 10, 0.10),
+            inset 0 0 0 1px rgba(180, 165, 130, 0.5);
+        overflow: hidden;
+    }
+
+    .envelope-airmail-border {
+        position: absolute;
+        inset: 0;
+        border-radius: 4px 4px 6px 6px;
+        border: 6px solid transparent;
+        background:
+            repeating-linear-gradient(
+                -45deg,
+                #c0392b 0px, #c0392b 8px,
+                #ffffff 8px, #ffffff 14px,
+                #2471a3 14px, #2471a3 22px,
+                #ffffff 22px, #ffffff 28px
+            ) border-box;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .envelope-flap {
+        position: relative;
+        height: 52px;
+        background: linear-gradient(160deg, #ede6d6 0%, #d9cebc 60%, #c9bfaa 100%);
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+        border-bottom: 1px solid rgba(160, 145, 110, 0.35);
+        z-index: 2;
+        box-shadow: 0 3px 8px rgba(60, 45, 20, 0.12);
+    }
+    .envelope-flap::before,
+    .envelope-flap::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(160,145,110,0.4), transparent);
+    }
+    .envelope-flap::before { left: 0; transform-origin: top left; transform: skewX(38deg); }
+    .envelope-flap::after  { right: 0; transform-origin: top right; transform: skewX(-38deg); }
+
+    .envelope-stamp-area {
+        position: absolute;
+        top: 10px;
+        right: 18px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 10;
+    }
+
+    .envelope-stamp {
+        width: 44px;
+        height: 52px;
+        background: linear-gradient(135deg, #e8e0cc 0%, #ddd4bc 100%);
+        border: 2px solid #b0a060;
+        border-radius: 2px;
+        box-shadow: 2px 2px 0 rgba(100,80,30,0.15), inset 0 0 0 3px rgba(255,255,255,0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: 3px dotted rgba(180,160,100,0.55);
+        outline-offset: 2px;
+    }
+    .envelope-stamp-inner {
+        font-size: 22px;
+        line-height: 1;
+        filter: sepia(0.4);
+    }
+
+    .envelope-postmark {
+        color: rgba(100, 60, 40, 0.55);
+        opacity: 0.7;
+        margin-right: 4px;
+    }
+
+    .envelope-paper {
+        position: relative;
+        background: #fff;
+        margin: 8px 12px 14px;
+        border-radius: 2px;
+        padding: 20px 20px 18px;
+        box-shadow: 0 -2px 6px rgba(60,45,20,0.08), 0 2px 10px rgba(60,45,20,0.10);
+        z-index: 3;
+        background-image:
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 27px,
+                rgba(180,165,130,0.08) 27px,
+                rgba(180,165,130,0.08) 28px
+            );
+    }
+
+    .envelope-bottom-fold {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 22px;
+        z-index: 1;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    .envelope-bottom-fold::before,
+    .envelope-bottom-fold::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 51%;
+        height: 22px;
+        background: linear-gradient(to top, #d4c9b0, #e8e0cc);
+        border-top: 1px solid rgba(160,145,110,0.3);
+    }
+    .envelope-bottom-fold::before {
+        left: 0;
+        clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    }
+    .envelope-bottom-fold::after {
+        right: 0;
+        clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    /* Letter header row */
+    .envelope-letter-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+    .envelope-address-block {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+    .env-address-line {
+        font-size: 12px;
+        color: #6b5a3e;
+        font-family: 'Georgia', serif;
+        letter-spacing: 0.2px;
+    }
+    .env-label {
+        font-weight: 700;
+        color: #8b6f47;
+        font-style: normal;
+        margin-right: 3px;
+    }
+    .env-value {
+        font-style: italic;
+        color: #4a3820;
+    }
+    .envelope-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(34, 139, 34, 0.09);
+        border: 1px solid rgba(34, 139, 34, 0.22);
+        color: #2d6a2d;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        white-space: nowrap;
+    }
+    .env-dot {
+        width: 7px;
+        height: 7px;
+        background: #3cb371;
+        border-radius: 50%;
+        display: inline-block;
+        animation: env-pulse 2s ease-in-out infinite;
+        flex-shrink: 0;
+    }
+    @keyframes env-pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(60, 179, 113, 0.5); }
+        50%       { box-shadow: 0 0 0 5px rgba(60, 179, 113, 0); }
+    }
+
+    /* Horizontal rule / crease line */
+    .envelope-rule {
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(180,155,100,0.35) 20%, rgba(180,155,100,0.35) 80%, transparent);
+        margin: 0 0 14px;
+    }
+
+    /* Headline + subtext */
+    .envelope-heading-block {
+        margin-bottom: 16px;
+    }
+    .envelope-heading {
+        font-family: 'Georgia', serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: #2a2218;
+        margin: 0 0 4px;
+        letter-spacing: -0.3px;
+    }
+    .envelope-subtext {
+        font-size: 12.5px;
+        color: #7a6548;
+        font-style: italic;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Textarea wrapper for char counter */
+    .envelope-textarea-wrap {
+        position: relative;
+        margin-bottom: 0;
+    }
+    .envelope-textarea-wrap textarea {
+        width: 100%;
+        box-sizing: border-box;
+        padding-bottom: 28px !important;
+    }
+    .env-char-count {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 11px;
+        color: rgba(100, 80, 50, 0.45);
+        font-family: monospace;
+        pointer-events: none;
+        transition: color 0.2s ease;
+    }
+    .env-char-count.warn { color: #c0392b !important; }
+
+    /* Trust line below button */
+    .envelope-trust-line {
+        text-align: center;
+        font-size: 11px;
+        color: rgba(100, 80, 50, 0.5);
+        margin: 8px 0 0;
+        letter-spacing: 0.2px;
+    }
+    .env-lock { font-size: 11px; }
+
+    .envelope-paper input,
+    .envelope-paper textarea {
+        background: rgba(255, 252, 245, 0.85) !important;
+        border: 1px solid rgba(180, 160, 110, 0.35) !important;
+        border-bottom: 1.5px solid rgba(160, 140, 90, 0.5) !important;
+        border-radius: 2px !important;
+        color: #2a2218 !important;
+    }
+    .envelope-paper input::placeholder,
+    .envelope-paper textarea::placeholder {
+        color: rgba(100, 80, 50, 0.45) !important;
+        font-style: italic;
+    }
+    .envelope-paper input:focus,
+    .envelope-paper textarea:focus {
+        border-color: rgba(160, 130, 70, 0.7) !important;
+        box-shadow: 0 0 0 3px rgba(180, 160, 110, 0.13) !important;
+        outline: none !important;
+        background: #fffdf7 !important;
+    }
+    .envelope-paper button[type="submit"] {
+        background: #2a2218 !important;
+        letter-spacing: 2px !important;
+        box-shadow: 0 3px 10px rgba(42,34,24,0.25) !important;
+    }
+    .envelope-paper button[type="submit"]:hover {
+        background: #4a3825 !important;
+        box-shadow: 0 6px 18px rgba(42,34,24,0.3) !important;
+    }
+
+    /* ── contact form success modal ── */
+    #contact-success-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #contact-success-modal.visible {
+        display: flex;
+        opacity: 1;
+    }
+    .success-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 13, 16, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    .success-modal-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 48px 40px;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(176, 168, 185, 0.2);
+        transform: scale(0.9) translateY(20px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #contact-success-modal.visible .success-modal-card {
+        transform: scale(1) translateY(0);
+    }
+    .success-modal-icon {
+        width: 80px;
+        height: 80px;
+        background: #eceaf0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        margin: 0 auto 24px;
+        border: 1px solid #b0a8b9;
+        color: #1c1e22;
+    }
+    .success-modal-card h2 {
+        font-size: 36px;
+        font-weight: 800;
+        color: #1c1e22;
+        margin: 0 0 12px 0;
+        letter-spacing: -0.5px;
+    }
+    .success-modal-card p {
+        font-size: 16px;
+        color: #5a5663;
+        line-height: 1.6;
+        margin: 0 0 32px 0;
+    }
+    .success-back-btn {
+        background: #1c1e22;
+        color: #ffffff;
+        border: none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 16px 36px;
+        font-size: 13px;
+        border-radius: 12px;
+        width: 100%;
+        box-shadow: 0 4px 16px rgba(28,30,34,0.15);
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+    }
+    .success-back-btn:hover {
+        background: #b0a8b9;
+        color: #1c1e22;
+        box-shadow: 0 8px 24px rgba(176,168,185,0.3);
+    }
+
+    /* ── Floating Back to Top Button ── */
+    #back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 46px;
+        height: 46px;
+        background: #1c1e22;
+        color: #ffffff;
+        border: 1px solid rgba(176, 168, 185, 0.25);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1900;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+    #back-to-top:hover {
+        background: #b0a8b9;
+        color: #1c1e22;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(176,168,185,0.35);
+    }
+
+    /* ── PREMIUM LIGHTBOX MECHANICS ── */
+    #premium-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+    }
+    #premium-lightbox.active {
+        display: flex;
+        pointer-events: auto;
+    }
+    .lightbox-bg {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 11, 14, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #premium-lightbox.active .lightbox-bg {
+        opacity: 1;
+    }
+    .lightbox-img-wrapper {
+        position: relative;
+        z-index: 2;
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .lightbox-img {
+        display: block;
+        max-width: 90vw;
+        max-height: 85vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+        transform-origin: top left;
+        transform: translate(var(--start-x), var(--start-y)) scale(var(--start-scale-x), var(--start-scale-y));
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #premium-lightbox.active .lightbox-img {
+        transform: translate(0, 0) scale(1, 1);
+    }
+    .lightbox-close {
+        position: fixed;
+        top: 24px;
+        right: 24px;
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        border-radius: 50%;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+    }
+    #premium-lightbox.active .lightbox-close {
+        opacity: 1;
+        transform: scale(1);
+    }
+    .lightbox-close:hover {
+        background: #ffffff;
+        color: #1c1e22;
+        transform: scale(1.05);
+    }
+
+    /* Mobile Adaptability for Sidebar Split Layout */
+    @media screen and (max-width: 768px) {
+        .gd-workspace-container {
+            flex-direction: column;
+        }
+        .gd-category-sidebar {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid #e8e8e8;
+            flex-direction: row;
+            overflow-x: auto;
+            padding: 12px;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        .gd-sidebar-title { display: none; }
+        .gd-filter-btn {
+            display: inline-flex;
+            padding: 6px 12px;
+            font-size: 12px;
+            width: auto;
+        }
+        .gd-btn-count { margin-left: 6px; }
+        #back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+        .lightbox-img-wrapper {
+            max-width: 95vw;
+        }
+        .lightbox-img {
+            max-width: 95vw;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="scroll-container">
+    <div id="scroll-progress"></div>
+</div>
+<div id="page-blur-overlay"></div>
+
+<button type="button" id="back-to-top" title="Go to Top">↑</button>
+
+<div id="premium-lightbox">
+    <div class="lightbox-bg"></div>
+    <button class="lightbox-close" aria-label="Close Gallery">&times;</button>
+    <div class="lightbox-img-wrapper">
+        <img class="lightbox-img" src="" alt="Gallery Expansion View">
+    </div>
+</div>
+
+<div id="contact-success-modal">
+    <div class="success-modal-backdrop"></div>
+    <div class="success-modal-card">
+        <div class="success-modal-icon">✓</div>
+        <h2>Thank You!</h2>
+        <p>Your message has been sent successfully. I'll get back to you as soon as possible.</p>
+        <button type="button" class="success-back-btn" id="success-home-trigger">BACK HOME</button>
+    </div>
+</div>
+
+<nav>
+    <a href="#home" class="logo">
+        <h1>DIETHER ERALDO</h1>
+    </a>
+    <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT ME</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#services">SERVICES</a>
+        <a href="#contact">CONTACT</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="hero-image">
+        <img src="Picsart_26-05-13_18-34-51-306.jpg" alt="Diether Eraldo">
+    </div>
+    <div class="hero-content">
+        <h2>Administrative Assistant <br>&amp; Creative Support</h2>
+        <p>Helping modern brands scale with agile systems, premium interfaces, and digital experiences.</p>
+        <a href="#contact" class="hero-btn">LET'S WORK TOGETHER</a>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="about-left">
+        <small>ABOUT ME</small>
+        <h2>Getting to know me.</h2>
+        <p>
+            I’m Diether, a Virtual Assistant specializing in Administrative & Creative Support. I help busy entrepreneurs and businesses stay organized, streamline their daily operations, and maintain a clean, modern digital presence. Whether it's managing your inbox, organizing your data, or updating your website, I turn your daily chaos into smooth, efficient solutions.
+        </p>
+        <button class="cv-btn" onclick="downloadCV()">VIEW MY CV ↗</button>
+    </div>
+    <div class="about-right">
+        <div class="about-item">
+            <div class="icon">🎓</div>
+            <div><h3>Education</h3><p>BS Information Technology</p></div>
+        </div>
+        <div class="about-item">
+            <div class="icon">🛠️</div>
+            <div><h3>Solutions Delivered</h3><p>5+ Projects &amp; Designs</p></div>
+        </div>
+        <div class="about-item">
+            <div class="icon">🌐</div>
+            <div><h3>Languages</h3><p>English & Filipino</p></div>
+        </div>
+        <div class="about-item">
+            <div class="icon">⚡</div>
+            <div><h3>Availability</h3><p>Full-Time / Part-Time</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="skills">
+    <small>SKILLS & TOOLS</small>
+    <h2>My Skills and Expertise</h2>
+    <div class="skills-grid">
+        <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3>Frontend Development</h3>
+            <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive Design</li></ul>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">🖥️</div>
+            <h3>Tools & Platforms</h3>
+            <ul><li>VS Code</li><li>PicsArt</li><li>Canva</li><li>AI Tools</li></ul>
+        </div>
+        <div class="skill-card">
+            <div class="skill-icon">💼</div>
+            <h3>Virtual Assistant</h3>
+            <ul><li>Email Management</li><li>CRM Management</li><li>Data Entry</li><li>Automation</li></ul>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <small>FEATURED PROJECTS</small>
+    <h2>Some of My Recent Work</h2>
+    <div class="projects-grid">
+
+        <div class="gd-project-card">
+            <div class="gd-cover">
+                <span class="gd-cover-bg-text">GFX</span>
+                <div class="gd-phones">
+                    <div class="gd-phone side-left">
+                        <img src="Phoot/8c0b585f-c440-4f42-9f76-d109c72a1896.jpg" alt="Home Care Myths">
+                    </div>
+                    <div class="gd-phone center">
+                        <img src="Phoot/de9d861a-b47f-470a-a6ad-1a2cbd3ea7e5.jpg" alt="FAST Aviation">
+                    </div>
+                    <div class="gd-phone side-right">
+                        <img src="Phoot/b7e5478b-9e82-416d-b182-6b7f61bd617b.jpg" alt="Bites on Wheels">
+                    </div>
+                </div>
+                <span class="gd-badge">Graphic Design</span>
+                <span class="gd-tag">Canva · Ads · Posters · UI</span>
+            </div>
+            <div class="project-info">
+                <h3>Graphic Design Samples</h3>
+                <p>School projects, ads, posters, UI prototypes &amp; practice graphic designs.</p>
+                <button class="project-trigger-btn" data-target="gd-modal">VIEW PROJECT</button>
+            </div>
+        </div>
+
+        <div class="lib-project-card">
+            <div class="lib-cover">
+                <span class="lib-cover-bg-text">LIB</span>
+                <div class="lib-phones">
+                    <div class="lib-phone side-left">
+                        <img src="ss1.jpg" width="72" height="128" alt="Home screen">
+                    </div>
+                    <div class="lib-phone center">
+                        <img src="ss2.jpg" width="90" height="152" alt="Scan screen">
+                    </div>
+                    <div class="lib-phone side-right">
+                        <img src="ss3.jpg" width="72" height="128" alt="Terms screen">
+                    </div>
+                </div>
+                <span class="lib-badge">Mobile App</span>
+                <span class="lib-tag">Kodular · PHP · MySQL</span>
+            </div>
+            <div class="project-info">
+                <h3>CPSU Library System</h3>
+                <p>Mobile-based borrowing &amp; returning system with QR scanning for CPSU Hinigaran Campus.</p>
+                <button class="project-trigger-btn" data-target="lib-modal">VIEW PROJECT</button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div id="gd-modal" class="project-modal-wrapper">
+    <div class="gd-modal-inner">
+        <div class="gd-modal-header">
+            <button class="gd-close-btn">×</button>
+            <h2>Graphic Design Portfolio</h2>
+            <p>School Projects · Ads · Posters · UI Prototypes · Practice Designs</p>
+        </div>
+        
+        <div class="gd-workspace-container">
+            <aside class="gd-category-sidebar">
+                <span class="gd-sidebar-title">Categories</span>
+                <button type="button" class="gd-filter-btn active" data-filter="all">All Designs <span class="gd-btn-count">13</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="posters">Posters <span class="gd-btn-count">5</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="advertisements">Advertisements <span class="gd-btn-count">5</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="social-media">Social Media Graphics <span class="gd-btn-count">4</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="school-projects">School Projects <span class="gd-btn-count">3</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="ui-ux">UI/UX Designs <span class="gd-btn-count">2</span></button>
+                <button type="button" class="gd-filter-btn" data-filter="practice-works">Practice Works <span class="gd-btn-count">3</span></button>
+            </aside>
+
+            <div class="gd-modal-body">
+                <p class="gd-modal-desc">
+                    A collection of personal and school-related graphic design works — from event posters and
+                    promotional ads to UI prototypes and infographics. These pieces reflect my journey in visual
+                    communication, combining creativity with purposeful design for real-world and academic contexts.
+                </p>
+                <div class="gd-gallery">
+
+                    <div class="gd-item landscape" data-categories="posters practice-works">
+                        <img src="Phoot/3ea08360-ffdc-46a0-a42d-b74400e685d9.jpg" alt="BGFA Banner" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">01</span>Barangay Buenavista Gibong Farmers Association — Event Banner</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="advertisements social-media">
+                        <img src="Phoot/8c0b585f-c440-4f42-9f76-d109c72a1896.jpg" alt="Home Care Myths Busted" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">02</span>Home Care Myths Busted — Social Media Ad Series Cover (1/5)</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="advertisements social-media">
+                        <img src="Phoot/8e534768-dd25-4c82-91cb-9ddb8d086952.jpg" alt="Myth #1" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">03</span>Home Care Myths — Myth #1: Home care is only for very sick people</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="ui-ux practice-works">
+                        <img src="Phoot/73e64e8b-6124-44f1-987c-4df952aea7fa.jpg" alt="Pet Feeder App UI" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">04</span>Auto Pet Feeder — Mobile UI Prototype (using Picsart)</p>
+                    </div>
+
+                    <div class="gd-item landscape" data-categories="ui-ux practice-works">
+                        <img src="Phoot/1188f2e4-5349-439d-a575-e9d9a6b6c84f.jpg" alt="SMAP Online Booking System" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">05</span>SMAP Online Booking System — Web UI Design Prototype for St. Michael Archangel Parish</p>
+                    </div>
+
+                    <div class="gd-item landscape" data-categories="posters advertisements">
+                        <img src="Phoot/41903d57-c037-4339-832e-9ef00901c6a2.jpg" alt="Halloween Dance Party Poster" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">06</span>Halloween Dance Party — Event Poster for Pontevedra Healthy Movers</p>
+                    </div>
+
+                    <div class="gd-item landscape" data-categories="posters school-projects">
+                        <img src="Phoot/55756e72-a4c5-4a8b-b73e-898b81c1d8bc.jpg" alt="Get Vaccinated Infographic" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">07</span>Get Vaccinated — COVID-19 Awareness Infographic Poster (School Project, BSIT 1A)</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="advertisements social-media">
+                        <img src="Phoot/76689172-26cc-4ba3-bc21-cb8bf21f68d3.jpg" alt="Myth #2" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">08</span>Home Care Myths — Myth #2: Home care is too expensive</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="advertisements social-media">
+                        <img src="Phoot/b7e5478b-9e82-416d-b182-6b7f61bd617b.jpg" alt="Bites on Wheels Flyer" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">09</span>Bites on Wheels — Food Truck Weekly Location Schedule Flyer</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="school-projects">
+                        <img src="Phoot/b930af91-1e33-42da-97f2-a1c2dd381042.jpg" alt="CPSU Educational Seminar Program" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">10</span>CPSU Educational Seminar — Official Program Layout, College of Computer Studies</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="advertisements">
+                        <img src="Phoot/bd7725cb-8c79-4ba9-8d77-e908459bba9b.jpg" alt="Myth #3" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">11</span>Home Care Myths — Myth #3: Accepting help means losing independence</p>
+                    </div>
+
+                    <div class="gd-item landscape" data-categories="posters">
+                        <img src="Phoot/da1f3f28-2cc3-483b-884f-efc17a38738a.jpg" alt="Handurayo Festival Banner" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">12</span>17th Handurayo Festival — Agro-Fishery Trade Fair Banner, May 4–9 2026</p>
+                    </div>
+
+                    <div class="gd-item portrait" data-categories="posters school-projects">
+                        <img src="Phoot/de9d861a-b47f-470a-a6ad-1a2cbd3ea7e5.jpg" alt="FAST Aviation Academy" loading="lazy">
+                        <p class="gd-caption"><span class="gd-count-badge">13</span>FAST Aviation Academy — Scholarship Program Promotional Poster, Bacolod City</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="lib-modal" class="project-modal-wrapper">
+    <div class="lib-modal-inner">
+        <div class="lib-close-btn">×</div>
+        <div class="lib-modal-header">
+            <h2>CPSU Library System</h2>
+            <p>CPSU Hinigaran Campus — Mobile Based Returning/Borrowing</p>
+        </div>
+        <div class="lib-modal-body">
+            <div class="lib-screenshots-row">
+                <div class="lib-ss-wrap">
+                    <div class="lib-ss-frame">
+                        <img src="ss1.jpg" alt="Home Screen">
+                    </div>
+                    <p class="lib-ss-label">Home Screen</p>
+                </div>
+                <div class="lib-ss-wrap">
+                    <div class="lib-ss-frame">
+                        <img src="ss2.jpg" alt="Scan Your ID">
+                    </div>
+                    <p class="lib-ss-label">Scan Your ID</p>
+                </div>
+                <div class="lib-ss-wrap">
+                    <div class="lib-ss-frame">
+                        <img src="ss3.jpg" alt="Terms & Conditions">
+                    </div>
+                    <p class="lib-ss-label">Terms &amp; Conditions</p>
+                </div>
+            </div>
+            <p class="lib-modal-desc">
+                A mobile application built with Kodular for CPSU Hinigaran Campus that digitizes the library's
+                book borrowing and returning process. Students scan their QR-coded ID to identify themselves,
+                then scan a book's ISBN to borrow or return it. All transactions are tracked in real time
+                through a PHP and MySQL backend, giving librarians a complete and accurate record of
+                all borrowed and returned books.
+            </p>
+            <div class="lib-chips">
+                <span class="lib-chip">Kodular</span>
+                <span class="lib-chip">PHP</span>
+                <span class="lib-chip">MySQL</span>
+                <span class="lib-chip">QR Scanning</span>
+                <span class="lib-chip">Library System</span>
+                <span class="lib-chip">Mobile App</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="services" class="services">
+    <small>WHAT I CAN HELP WITH</small>
+    <h2>Services I Offer</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Graphic Design</h3>
+            <p>Eye-catching designs that elevate your brand.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">✉️</div>
+            <h3>Email Marketing</h3>
+            <p>Email campaigns that engage and convert your audience.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>CRM Management</h3>
+            <p>Manage leads, clients and tasks efficiently.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">⚙️</div>
+            <h3>Automation</h3>
+            <p>Automate workflows and save time for your business.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🖥️</div>
+            <h3>Web Development</h3>
+            <p>Custom websites built for your business needs.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="contact-banner">
+        <h2>Let's Build Something <br> Amazing Together!</h2>
+        <div class="banner-right">
+            <p>Have a project in mind? <br> I'm ready to help you.</p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=dietheraldo25@gmail.com"
+               target="_blank" class="contact-btn">CONTACT ME</a>
+        </div>
+    </div>
+    <div class="contact-content">
+        <div class="contact-left">
+            <small>GET IN TOUCH</small>
+            <h2>Contact Me</h2>
+            <div class="contact-item"><span>✉️</span><p>dietheraldo25@gmail.com</p></div>
+            <div class="contact-item"><span>📞</span><p>+63 951 975 7764</p></div>
+            <div class="contact-item"><span>📍</span><p>Philippines</p></div>
+            
+        </div>
+        <div class="contact-right">
+            <div class="envelope-wrap">
+                <div class="envelope-airmail-border"></div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="envelope-stamp-area">
+                    <div class="envelope-stamp">
+                        <div class="envelope-stamp-inner">✉</div>
+                    </div>
+                    <div class="envelope-postmark">
+                        <svg viewBox="0 0 64 64" width="56" height="56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 2"/>
+                            <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="1"/>
+                            <text x="32" y="27" text-anchor="middle" font-size="6.5" fill="currentColor" font-family="serif" letter-spacing="1">PHILIPPINES</text>
+                            <text x="32" y="38" text-anchor="middle" font-size="6" fill="currentColor" font-family="serif" letter-spacing="0.5">2026</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="envelope-paper">
+
+                    <div class="envelope-letter-header">
+                        <div class="envelope-address-block">
+                            <div class="env-address-line env-from"><span class="env-label">From:</span> <span class="env-value">You</span></div>
+                            <div class="env-address-line env-to"><span class="env-label">To:</span> <span class="env-value">Diether Eraldo</span></div>
+                        </div>
+                        <div class="envelope-availability">
+                            <span class="env-dot"></span> Available for new projects
+                        </div>
+                    </div>
+
+                    <div class="envelope-rule"></div>
+
+                    <div class="envelope-heading-block">
+                        <h3 class="envelope-heading">Drop Me a Line</h3>
+    
+                    </div>
+
+                    <form id="contact-form">
+                        <div class="input-row">
+                            <input type="text" name="name" placeholder="Your Name *" required>
+                            <input type="email" name="email" placeholder="Your Email *" required>
+                        </div>
+                        <div class="envelope-textarea-wrap">
+                            <textarea name="message" id="env-message" placeholder="Your Message *" minlength="10" maxlength="500" required></textarea>
+                            <span class="env-char-count"><span id="env-char-num">0</span> / 500</span>
+                        </div>
+                        <button type="submit">Seal &amp; Send ✉</button>
+                        <p class="envelope-trust-line">
+                            <span class="env-lock">🔒</span> Your info stays private &nbsp;·&nbsp; No spam, just a conversation
+                        </p>
+                    </form>
+                </div>
+
+                <div class="envelope-bottom-fold"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function downloadCV() {
+    const fileUrl = "./Eraldo, Diether_Resume.pdf"; 
+    const fileName = "Eraldo, Diether_Resume.pdf";
+
+    const link = document.createElement("a");
+    link.href = fileUrl;
+    link.setAttribute("download", fileName);
+    link.setAttribute("target", "_blank"); 
+    link.style.display = "none";
+    
+    document.body.appendChild(link);
+    link.click();
+    
+    setTimeout(() => {
+        document.body.removeChild(link);
+    }, 100);
+}
+</script>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    emailjs.sendForm("service_k9rsjnf", "template_etl0ty7", this)
+    .then(() => {
+        this.reset();
+        
+        const successModal = document.getElementById("contact-success-modal");
+        if (successModal) {
+            successModal.style.display = "flex";
+            successModal.offsetHeight; 
+            successModal.classList.add("visible");
+            document.body.classList.add("modal-open");
+        }
+    })
+    .catch((error) => {
+        alert("Oops! Message failed.");
+        console.log(error);
+    });
+});
+
+document.getElementById("success-home-trigger").addEventListener("click", function() {
+    const successModal = document.getElementById("contact-success-modal");
+    if (successModal) {
+        successModal.classList.remove("visible");
+        document.body.classList.remove("modal-open");
+        setTimeout(() => {
+            successModal.style.display = "none";
+            window.location.href = "#home";
+        }, 400);
+    }
+});
+/* Character counter for message textarea */
+(function() {
+    var textarea = document.getElementById("env-message");
+    var counter  = document.getElementById("env-char-num");
+    var wrap     = counter ? counter.closest(".env-char-count") : null;
+    if (!textarea || !counter) return;
+    textarea.addEventListener("input", function() {
+        var len = textarea.value.length;
+        counter.textContent = len;
+        if (wrap) wrap.classList.toggle("warn", len >= 450);
+    });
+})();
+</script>
+
+<script>
+(function () {
+
+    /* 1. Scroll progress bar */
+    const bar = document.getElementById("scroll-progress");
+    window.addEventListener("scroll", function () {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+            const progress = (window.scrollY / totalHeight) * 100;
+            bar.style.width = progress.toFixed(1) + "%";
+        } else {
+            bar.style.width = "0%";
+        }
+    }, { passive: true });
+
+    /* 2. Nav shrink & Floating Back to Top Toggle */
+    var nav = document.querySelector("nav");
+    const backToTopBtn = document.getElementById("back-to-top");
+    
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 60) {
+            nav.classList.add("scrolled");
+        } else {
+            nav.classList.remove("scrolled");
+        }
+
+        if (window.scrollY > 400) {
+            backToTopBtn.classList.add("visible");
+        } else {
+            backToTopBtn.classList.remove("visible");
+        }
+    }, { passive: true });
+
+    backToTopBtn.addEventListener("click", function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+
+    /* 3. Hero reveal on load */
+    window.addEventListener("load", function () {
+        var hi = document.querySelector(".hero-image");
+        var hc = document.querySelector(".hero-content");
+        if (hi) hi.classList.add("sa-show");
+        if (hc) hc.classList.add("sa-show");
+    });
+
+    /* 4. Tag elements for scroll reveal */
+    function tag(selector, mod, stagger) {
+        var els = document.querySelectorAll(selector);
+        els.forEach(function (el, i) {
+            el.classList.add("sa-hide");
+            if (mod) el.classList.add(mod);
+            if (stagger) el.classList.add("sa-d" + ((i % 5) + 1));
+        });
+    }
+
+    tag(".about-left small, .about-left h2, .about-left p, .about-left button", "sa-left");
+    tag(".about-item", null, true);
+    tag(".skills small, .skills h2", "sa-left");
+    tag(".skill-card", null, true);
+    tag(".projects small, .projects h2");
+    tag(".project-card, .lib-project-card, .gd-project-card", null, true);
+    tag(".services small, .services h2");
+    tag(".service-card", null, true);
+    tag(".contact-banner", "sa-scale");
+    tag(".contact-left small, .contact-left h2", "sa-left");
+    tag(".contact-right", "sa-right");
+
+    /* 5. IntersectionObserver */
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("sa-show");
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".sa-hide").forEach(function (el) {
+        io.observe(el);
+    });
+
+    /* 6. Card spotlight & Controlled Modal Toggle */
+    var overlay = document.getElementById("page-blur-overlay");
+    var activeCard = null;
+    var activeItem = null;
+
+    function closeSpotlight() {
+        if (activeCard) {
+            activeCard.classList.remove("card-spotlight");
+            activeCard = null;
+        }
+        if (activeItem) {
+            activeItem.classList.remove("item-spotlight");
+            activeItem = null;
+        }
+        overlay.classList.remove("active");
+        document.body.classList.remove("modal-open");
+        document.querySelectorAll(".project-modal-wrapper").forEach(m => m.classList.remove("open"));
+    }
+
+    document.querySelectorAll(".project-trigger-btn").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var card = btn.closest(".project-card, .lib-project-card, .gd-project-card");
+            var targetModalId = btn.getAttribute("data-target");
+            
+            if (!targetModalId) {
+                var hasPage = card.dataset.url && card.dataset.url.trim() !== "";
+                if (hasPage) { 
+                    window.open(card.dataset.url, "_blank"); 
+                    return; 
+                }
+                if (activeCard === card) return;
+                closeSpotlight();
+                activeCard = card;
+                card.classList.add("card-spotlight");
+                overlay.classList.add("active");
+                return;
+            }
+
+            var targetModal = document.getElementById(targetModalId);
+            if (targetModal) {
+                closeSpotlight();
+                targetModal.classList.add("open");
+                document.body.classList.add("modal-open");
+            }
+        });
+    });
+
+    document.querySelectorAll(".gd-close-btn, .lib-close-btn").forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeSpotlight();
+        });
+    });
+
+    document.querySelectorAll(".project-modal-wrapper").forEach(function(modal) {
+        modal.addEventListener("click", function(e) {
+            if (e.target === modal) {
+                closeSpotlight();
+            }
+        });
+    });
+
+    var spotlightSelectors = ".about-item, .skill-card, .service-card, .contact-item";
+    document.querySelectorAll(spotlightSelectors).forEach(function (item) {
+        item.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (activeItem === item) { return; }
+            closeSpotlight();
+            activeItem = item;
+            item.classList.add("item-spotlight");
+            overlay.classList.add("active");
+        });
+    });
+
+    overlay.addEventListener("click", closeSpotlight);
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeSpotlight();
+        }
+    });
+
+    /* 7. Button ripple */
+    document.querySelectorAll("button, .hero-btn, .cv-btn, .contact-btn, #back-to-top").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+            var rect = btn.getBoundingClientRect();
+            var size = Math.max(rect.width, rect.height);
+            var span = document.createElement("span");
+            span.style.cssText =
+                "position:absolute;border-radius:50%;pointer-events:none;" +
+                "background:rgba(255,255,255,0.28);" +
+                "width:" + size + "px;height:" + size + "px;" +
+                "left:" + (e.clientX - rect.left - size / 2) + "px;" +
+                "top:" + (e.clientY - rect.top - size / 2) + "px;" +
+                "transform:scale(0);animation:sa-ripple 0.5s ease-out forwards;";
+            btn.appendChild(span);
+            setTimeout(function () { span.remove(); }, 520);
+        });
+    });
+
+    /* 8. Sidebar Graphic Design Filtering Mechanism */
+    document.querySelectorAll(".gd-filter-btn").forEach(function(button) {
+        button.addEventListener("click", function() {
+            document.querySelectorAll(".gd-filter-btn").forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            const selectedFilter = button.getAttribute("data-filter");
+            const galleryItems = document.querySelectorAll(".gd-item");
+
+            galleryItems.forEach(function(item) {
+                const innerTags = item.getAttribute("data-categories").split(" ");
+                
+                if (selectedFilter === "all" || innerTags.includes(selectedFilter)) {
+                    item.classList.remove("hidden-filter");
+                } else {
+                    item.classList.add("hidden-filter");
+                }
+            });
+        });
+    });
+
+    /* 9. PREMIUM LIGHTBOX EXPANSION CONTROLLER */
+    const lightbox = document.getElementById("premium-lightbox");
+    const lightboxImg = lightbox.querySelector(".lightbox-img");
+    let originImgElement = null;
+
+    function openLightbox(e) {
+        originImgElement = e.target;
+        const src = originImgElement.getAttribute("src");
+        if (!src) return;
+
+        lightboxImg.setAttribute("src", src);
+        lightboxImg.setAttribute("alt", originImgElement.getAttribute("alt") || "Expanded View");
+
+        const originRect = originImgElement.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        const targetWidth = Math.min(viewportWidth * 0.9, originRect.width * (viewportHeight * 0.85 / originRect.height));
+        const targetHeight = originRect.height * (targetWidth / originRect.width);
+        const targetX = (viewportWidth - targetWidth) / 2;
+        const targetY = (viewportHeight - targetHeight) / 2;
+
+        const startScaleX = originRect.width / targetWidth;
+        const startScaleY = originRect.height / targetHeight;
+        const startX = originRect.left - targetX;
+        const startY = originRect.top - targetY;
+
+        lightboxImg.style.setProperty("--start-x", `${startX}px`);
+        lightboxImg.style.setProperty("--start-y", `${startY}px`);
+        lightboxImg.style.setProperty("--start-scale-x", startScaleX);
+        lightboxImg.style.setProperty("--start-scale-y", startScaleY);
+
+        lightbox.classList.add("active");
+        document.body.classList.add("modal-open");
+    }
+
+    function closeLightbox() {
+        if (!lightbox.classList.contains("active")) return;
+
+        if (originImgElement) {
+            const originRect = originImgElement.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            const targetWidth = Math.min(viewportWidth * 0.9, originRect.width * (viewportHeight * 0.85 / originRect.height));
+            const targetHeight = originRect.height * (targetWidth / originRect.width);
+            const targetX = (viewportWidth - targetWidth) / 2;
+            const targetY = (viewportHeight - targetHeight) / 2;
+
+            const endScaleX = originRect.width / targetWidth;
+            const endScaleY = originRect.height / targetHeight;
+            const endX = originRect.left - targetX;
+            const endY = originRect.top - targetY;
+
+            lightboxImg.style.setProperty("--start-x", `${endX}px`);
+            lightboxImg.style.setProperty("--start-y", `${endY}px`);
+            lightboxImg.style.setProperty("--start-scale-x", endScaleX);
+            lightboxImg.style.setProperty("--start-scale-y", endScaleY);
+        }
+
+        lightbox.classList.remove("active");
+        
+        setTimeout(() => {
+            const anyModalOpen = Array.from(document.querySelectorAll('.project-modal-wrapper')).some(m => m.classList.contains('open'));
+            if (!anyModalOpen) {
+                document.body.classList.remove("modal-open");
+            }
+            lightboxImg.setAttribute("src", "");
+            originImgElement = null;
+        }, 500);
+    }
+
+    /* Target ONLY images inside modal environments */
+    const imageSelectors = ".gd-item img, .lib-ss-frame img";
+    document.querySelectorAll(imageSelectors).forEach(img => {
+        img.addEventListener("click", function(e) {
+            e.stopPropagation();
+            openLightbox(e);
+        });
+    });
+
+    lightbox.querySelector(".lightbox-bg").addEventListener("click", closeLightbox);
+    lightbox.querySelector(".lightbox-close").addEventListener("click", closeLightbox);
+    
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closeLightbox();
+        }
+    });
+
+})();
+</script>
+
+</body>
+</html>
