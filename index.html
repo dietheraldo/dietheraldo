@@ -205,10 +205,10 @@
     }
 
     /* ── Card hover lift ── */
-    .skill-card, .service-card, .project-card, .lib-project-card, .gd-project-card {
+    .skill-card, .service-card, .project-card, .lib-project-card, .gd-project-card, .em-project-card {
         transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease !important;
     }
-    .skill-card:hover, .service-card:hover, .project-card:hover, .lib-project-card:hover, .gd-project-card:hover {
+    .skill-card:hover, .service-card:hover, .project-card:hover, .lib-project-card:hover, .gd-project-card:hover, .em-project-card:hover {
         transform: translateY(-8px) scale(1.02) !important;
         box-shadow: 0 20px 40px rgba(30,42,56,0.13) !important;
     }
@@ -327,6 +327,455 @@
         background: #b0a8b9 !important;
         transform: scale(1.15) !important;
         transition: transform 0.3s ease, background 0.3s ease !important;
+    }
+
+    /* ══════════════════════════════════════════
+       ── Email Management Project Card ──
+    ══════════════════════════════════════════ */
+    .em-project-card {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 16px;
+        border: 0.5px solid #e2e2e2;
+        display: flex;
+        flex-direction: column;
+    }
+    .em-cover {
+        position: relative;
+        height: 220px;
+        background: linear-gradient(135deg, #1a2a4a 0%, #1e3a6e 40%, #2653a8 70%, #1a2a4a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 16px;
+    }
+    .em-cover-bg-text {
+        position: absolute;
+        font-size: 110px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.04);
+        left: -10px; top: 10px;
+        user-select: none;
+        pointer-events: none;
+        letter-spacing: -4px;
+    }
+    .em-mockup {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 340px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+        font-size: 0;
+    }
+    .em-mockup-bar {
+        background: rgba(255,255,255,0.12);
+        padding: 7px 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .em-dot { width: 7px; height: 7px; border-radius: 50%; }
+    .em-dot.r { background: #ff5f57; }
+    .em-dot.y { background: #febc2e; }
+    .em-dot.g { background: #28c840; }
+    .em-bar-title {
+        font-size: 10px;
+        color: rgba(255,255,255,0.6);
+        font-family: monospace;
+        letter-spacing: 0.5px;
+        flex: 1;
+        text-align: center;
+    }
+    .em-inbox-row {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .em-inbox-row.unread { background: rgba(255,255,255,0.06); }
+    .em-avatar {
+        width: 22px; height: 22px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        font-weight: 700;
+        color: #fff;
+        font-family: sans-serif;
+    }
+    .em-row-content { flex: 1; overflow: hidden; }
+    .em-row-sender {
+        font-size: 9px;
+        font-weight: 700;
+        color: rgba(255,255,255,0.85);
+        font-family: sans-serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .em-row-subject {
+        font-size: 8.5px;
+        color: rgba(255,255,255,0.45);
+        font-family: sans-serif;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .em-label-tag {
+        font-size: 7.5px;
+        font-weight: 700;
+        padding: 2px 5px;
+        border-radius: 4px;
+        font-family: sans-serif;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .em-label-tag.urgent { background: rgba(220,50,50,0.25); color: #ff8a8a; }
+    .em-label-tag.client { background: rgba(50,180,100,0.2); color: #6de0a0; }
+    .em-label-tag.follow { background: rgba(255,180,50,0.2); color: #ffd27a; }
+    .em-label-tag.done   { background: rgba(100,100,255,0.2); color: #a0a8ff; }
+    .em-sidebar {
+        position: absolute;
+        left: 0; top: 29px; bottom: 0;
+        width: 70px;
+        background: rgba(0,0,0,0.2);
+        border-right: 1px solid rgba(255,255,255,0.07);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding: 8px 6px;
+    }
+    .em-nav-item {
+        font-size: 8px;
+        color: rgba(255,255,255,0.45);
+        font-family: sans-serif;
+        padding: 4px 6px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+    }
+    .em-nav-item.active {
+        background: rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.9);
+    }
+    .em-nav-count {
+        margin-left: auto;
+        background: rgba(255,255,255,0.15);
+        border-radius: 8px;
+        padding: 0 4px;
+        font-size: 7px;
+    }
+    .em-badge {
+        position: absolute;
+        top: 12px; right: 12px;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.28);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        padding: 4px 10px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+    .em-tag {
+        position: absolute;
+        bottom: 12px; left: 12px;
+        background: rgba(0,0,0,0.35);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: rgba(255,255,255,0.9);
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        z-index: 3;
+    }
+
+    /* ══════════════════════════════════════════
+       ── Email Mgmt Modal ──
+    ══════════════════════════════════════════ */
+    #em-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.65);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    #em-modal.open {
+        display: flex;
+        opacity: 1;
+    }
+    .em-modal-inner {
+        background: #fff;
+        border-radius: 20px;
+        max-width: 700px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+    }
+    #em-modal.open .em-modal-inner { transform: scale(1); }
+    .em-modal-header {
+        background: linear-gradient(135deg, #1a2a4a 0%, #1e3a6e 50%, #2653a8 100%);
+        padding: 28px 24px 20px;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+    }
+    .em-modal-header::before {
+        content: "INBOX";
+        position: absolute;
+        font-size: 80px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.04);
+        bottom: -10px; right: -10px;
+        pointer-events: none;
+    }
+    .em-modal-header h2 { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+    .em-modal-header p  { font-size: 13px; opacity: 0.8; margin: 0; }
+    .em-close-btn {
+        position: absolute;
+        top: 14px; right: 14px;
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        border-radius: 50%;
+        width: 30px; height: 30px;
+        font-size: 20px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 2;
+    }
+    .em-modal-body { padding: 24px; }
+    .em-full-mockup {
+        background: #f5f7fa;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 22px;
+        font-family: sans-serif;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .em-full-topbar {
+        background: #1a2a4a;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .em-full-title { font-size: 13px; font-weight: 700; color: #fff; }
+    .em-full-subtitle { font-size: 11px; color: rgba(255,255,255,0.55); margin-left: auto; }
+    .em-layout {
+        display: flex;
+        min-height: 260px;
+    }
+    .em-left-sidebar {
+        width: 150px;
+        background: #1e2d4a;
+        padding: 14px 10px;
+        flex-shrink: 0;
+    }
+    .em-sidebar-label {
+        font-size: 9px;
+        font-weight: 800;
+        color: rgba(255,255,255,0.3);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+        padding-left: 4px;
+    }
+    .em-sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 8px;
+        border-radius: 6px;
+        font-size: 11px;
+        color: rgba(255,255,255,0.55);
+        margin-bottom: 2px;
+        cursor: default;
+    }
+    .em-sidebar-link.active {
+        background: rgba(255,255,255,0.12);
+        color: #fff;
+        font-weight: 600;
+    }
+    .em-sidebar-link .cnt {
+        margin-left: auto;
+        font-size: 9px;
+        background: rgba(255,255,255,0.15);
+        padding: 1px 5px;
+        border-radius: 8px;
+    }
+    .em-sidebar-link.active .cnt {
+        background: #2653a8;
+        color: #fff;
+    }
+    .em-divider-line {
+        height: 1px;
+        background: rgba(255,255,255,0.08);
+        margin: 10px 0;
+    }
+    .em-label-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 8px;
+        border-radius: 5px;
+        font-size: 10px;
+        color: rgba(255,255,255,0.5);
+        cursor: default;
+    }
+    .em-label-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        flex-shrink: 0;
+    }
+    .em-main-panel {
+        flex: 1;
+        background: #fff;
+        overflow: hidden;
+    }
+    .em-search-bar {
+        padding: 10px 14px;
+        border-bottom: 1px solid #eef0f3;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .em-search-input {
+        flex: 1;
+        background: #f5f7fa;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 5px 10px;
+        font-size: 11px;
+        color: #4a5568;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .em-search-input span { color: #a0aec0; }
+    .em-filter-chips {
+        display: flex;
+        gap: 6px;
+    }
+    .em-chip {
+        font-size: 9px;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 10px;
+        border: 1px solid #e2e8f0;
+        color: #718096;
+        background: #fff;
+        white-space: nowrap;
+    }
+    .em-chip.active { background: #1a2a4a; color: #fff; border-color: #1a2a4a; }
+    .em-email-list { padding: 0; }
+    .em-email-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 14px;
+        border-bottom: 1px solid #f5f7fa;
+        cursor: default;
+        transition: background 0.2s;
+    }
+    .em-email-item:hover { background: #f9fafb; }
+    .em-email-item.unread { background: #f0f4ff; }
+    .em-email-avatar {
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+        margin-top: 1px;
+    }
+    .em-email-body { flex: 1; overflow: hidden; }
+    .em-email-top {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 2px;
+    }
+    .em-email-sender {
+        font-size: 11px;
+        font-weight: 700;
+        color: #1a202c;
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .em-email-item:not(.unread) .em-email-sender { font-weight: 500; color: #4a5568; }
+    .em-email-time { font-size: 10px; color: #a0aec0; flex-shrink: 0; }
+    .em-email-subject {
+        font-size: 11px;
+        color: #2d3748;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 2px;
+    }
+    .em-email-item:not(.unread) .em-email-subject { font-weight: 400; color: #718096; }
+    .em-email-preview {
+        font-size: 10px;
+        color: #a0aec0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .em-pill {
+        font-size: 8.5px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 6px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .em-pill.urgent { background: #fff5f5; color: #e53e3e; }
+    .em-pill.client { background: #f0fff4; color: #38a169; }
+    .em-pill.follow { background: #fffaf0; color: #dd6b20; }
+    .em-pill.done   { background: #ebf4ff; color: #3182ce; }
+    .em-pill.meeting{ background: #faf5ff; color: #805ad5; }
+    .em-modal-desc { font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 18px; }
+    .em-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .em-chip-tag {
+        background: #edf2ff;
+        color: #1a2a4a;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 5px 12px;
+        border-radius: 20px;
     }
 
     /* ══════════════════════════════════════════
@@ -654,14 +1103,12 @@
     }
     .gd-close-btn:hover { background: rgba(255,255,255,0.28); }
     
-    /* Workspace Layout Split */
     .gd-workspace-container {
         display: flex;
         flex: 1;
         overflow: hidden;
     }
     
-    /* Sidebar Filter Component */
     .gd-category-sidebar {
         width: 240px;
         background: #ffffff;
@@ -738,7 +1185,6 @@
         margin-top: 0;
     }
 
-    /* ── Gallery ── */
     .gd-gallery {
         display: flex;
         flex-direction: column;
@@ -750,7 +1196,7 @@
         overflow: hidden;
         border: 1px solid #e8e8e8;
         box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-        transition: transform 0.4s cubic-bezier(.25,.8,.25,1), opacity 0.35s ease, cubic-bezier(.25,.8,.25,1);
+        transition: transform 0.4s cubic-bezier(.25,.8,.25,1), opacity 0.35s ease;
         opacity: 1;
         transform: scale(1) translateY(0);
     }
@@ -763,16 +1209,12 @@
         transform: translateY(-3px);
         box-shadow: 0 8px 28px rgba(0,0,0,0.11);
     }
-    .gd-item img {
-        cursor: zoom-in;
-    }
-    /* Landscape: natural aspect ratio */
+    .gd-item img { cursor: zoom-in; }
     .gd-item.landscape img {
         width: 100%;
         height: auto;
         display: block;
     }
-    /* Portrait: 1:1 square with contain */
     .gd-item.portrait img {
         width: 100%;
         aspect-ratio: 1 / 1;
@@ -801,6 +1243,119 @@
         letter-spacing: 0.5px;
         margin-right: 6px;
         font-style: normal;
+    }
+
+    /* ══════════════════════════════════════════
+       ── Why Work With Me Section ──
+    ══════════════════════════════════════════ */
+    .why-section {
+        padding: 80px 10%;
+        background: #1c1e22;
+        position: relative;
+        overflow: hidden;
+    }
+    .why-section::before {
+        content: "";
+        position: absolute;
+        top: -120px; right: -120px;
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(176,168,185,0.07) 0%, transparent 65%);
+        pointer-events: none;
+    }
+    .why-section small {
+        display: block;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        color: #b0a8b9;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+    .why-section h2 {
+        font-size: 38px;
+        font-weight: 800;
+        color: #f0eef4;
+        margin: 0 0 12px;
+        letter-spacing: -0.5px;
+    }
+    .why-section .why-subtitle {
+        font-size: 15px;
+        color: #7a7585;
+        margin: 0 0 48px;
+        max-width: 520px;
+        line-height: 1.6;
+    }
+    .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+    }
+    .why-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(176,168,185,0.12);
+        border-radius: 16px;
+        padding: 24px 22px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .why-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(176,168,185,0.05) 0%, transparent 60%);
+        pointer-events: none;
+    }
+    .why-card:hover {
+        background: rgba(255,255,255,0.07);
+        border-color: rgba(176,168,185,0.28);
+        transform: translateY(-4px);
+    }
+    .why-check {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: rgba(176,168,185,0.12);
+        border: 1px solid rgba(176,168,185,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+        transition: background 0.3s ease;
+    }
+    .why-card:hover .why-check {
+        background: rgba(176,168,185,0.22);
+    }
+    .why-card-text h3 {
+        font-size: 15px;
+        font-weight: 700;
+        color: #f0eef4;
+        margin: 0 0 5px;
+        letter-spacing: -0.2px;
+    }
+    .why-card-text p {
+        font-size: 13px;
+        color: #7a7585;
+        margin: 0;
+        line-height: 1.55;
+    }
+    .why-checkmark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 18px; height: 18px;
+        background: #b0a8b9;
+        color: #1c1e22;
+        border-radius: 50%;
+        font-size: 10px;
+        font-weight: 900;
+        flex-shrink: 0;
+        margin-top: 2px;
     }
 
     /* ══════════════════════════════════════════
@@ -944,7 +1499,6 @@
         clip-path: polygon(0 0, 100% 100%, 0 100%);
     }
 
-    /* Letter header row */
     .envelope-letter-header {
         display: flex;
         align-items: flex-start;
@@ -1002,14 +1556,12 @@
         50%       { box-shadow: 0 0 0 5px rgba(60, 179, 113, 0); }
     }
 
-    /* Horizontal rule / crease line */
     .envelope-rule {
         height: 1px;
         background: linear-gradient(to right, transparent, rgba(180,155,100,0.35) 20%, rgba(180,155,100,0.35) 80%, transparent);
         margin: 0 0 14px;
     }
 
-    /* Headline + subtext */
     .envelope-heading-block {
         margin-bottom: 16px;
     }
@@ -1029,7 +1581,6 @@
         line-height: 1.5;
     }
 
-    /* Textarea wrapper for char counter */
     .envelope-textarea-wrap {
         position: relative;
         margin-bottom: 0;
@@ -1051,7 +1602,6 @@
     }
     .env-char-count.warn { color: #c0392b !important; }
 
-    /* Trust line below button */
     .envelope-trust-line {
         text-align: center;
         font-size: 11px;
@@ -1234,9 +1784,7 @@
         opacity: 0;
         transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    #premium-lightbox.active .lightbox-bg {
-        opacity: 1;
-    }
+    #premium-lightbox.active .lightbox-bg { opacity: 1; }
     .lightbox-img-wrapper {
         position: relative;
         z-index: 2;
@@ -1259,9 +1807,7 @@
         transform: translate(var(--start-x), var(--start-y)) scale(var(--start-scale-x), var(--start-scale-y));
         transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    #premium-lightbox.active .lightbox-img {
-        transform: translate(0, 0) scale(1, 1);
-    }
+    #premium-lightbox.active .lightbox-img { transform: translate(0, 0) scale(1, 1); }
     .lightbox-close {
         position: fixed;
         top: 24px;
@@ -1282,20 +1828,85 @@
         transform: scale(0.8);
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
     }
-    #premium-lightbox.active .lightbox-close {
-        opacity: 1;
-        transform: scale(1);
+    #premium-lightbox.active .lightbox-close { opacity: 1; transform: scale(1); }
+    .lightbox-close:hover { background: #ffffff; color: #1c1e22; transform: scale(1.05); }
+
+    /* Contact availability CTA */
+    .contact-availability-cta {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        width: 100%;
+        margin: 0 0 30px;
+        padding: 18px 20px 18px 18px;
+        background: linear-gradient(135deg, #ffffff 0%, #f7f5fa 100%);
+        border: 1px solid rgba(176, 168, 185, 0.5);
+        border-left: 5px solid #3cb371;
+        border-radius: 16px;
+        box-shadow: 0 14px 34px rgba(28, 30, 34, 0.11);
+        overflow: hidden;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none;
     }
-    .lightbox-close:hover {
-        background: #ffffff;
+    .contact-availability-cta::after {
+        content: "OPEN";
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        padding: 4px 9px;
+        border-radius: 999px;
+        background: rgba(60, 179, 113, 0.12);
+        color: #247a4b;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.4px;
+    }
+    .cta-dot {
+        width: 13px;
+        height: 13px;
+        margin-top: 4px;
+        background: #3cb371;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: 0 0 0 6px rgba(60, 179, 113, 0.14);
+        animation: env-pulse 2s ease-in-out infinite;
+    }
+    .contact-availability-cta p {
+        margin: 0;
+        padding-right: 54px;
+        font-size: 15px;
+        color: #4f4a59;
+        line-height: 1.65;
+    }
+    .contact-availability-cta p strong {
+        display: block;
+        margin-bottom: 3px;
         color: #1c1e22;
-        transform: scale(1.05);
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 1.4;
     }
 
-    /* Mobile Adaptability for Sidebar Split Layout */
     @media screen and (max-width: 768px) {
-        .gd-workspace-container {
-            flex-direction: column;
+        .gd-workspace-container { flex-direction: column; }
+        .contact-availability-cta {
+            padding: 16px;
+            gap: 12px;
+        }
+        .contact-availability-cta::after {
+            position: static;
+            align-self: flex-start;
+            order: 3;
+            margin-left: auto;
+        }
+        .contact-availability-cta p {
+            padding-right: 0;
+            font-size: 14px;
+        }
+        .contact-availability-cta p strong {
+            font-size: 15px;
         }
         .gd-category-sidebar {
             width: 100%;
@@ -1308,26 +1919,13 @@
             white-space: nowrap;
         }
         .gd-sidebar-title { display: none; }
-        .gd-filter-btn {
-            display: inline-flex;
-            padding: 6px 12px;
-            font-size: 12px;
-            width: auto;
-        }
+        .gd-filter-btn { display: inline-flex; padding: 6px 12px; font-size: 12px; width: auto; }
         .gd-btn-count { margin-left: 6px; }
-        #back-to-top {
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            font-size: 16px;
-        }
-        .lightbox-img-wrapper {
-            max-width: 95vw;
-        }
-        .lightbox-img {
-            max-width: 95vw;
-        }
+        #back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; font-size: 16px; }
+        .lightbox-img-wrapper { max-width: 95vw; }
+        .lightbox-img { max-width: 95vw; }
+        .why-section { padding: 60px 5%; }
+        .why-section h2 { font-size: 28px; }
     }
 </style>
 </head>
@@ -1387,7 +1985,7 @@
         <small>ABOUT ME</small>
         <h2>Getting to know me.</h2>
         <p>
-            I’m Diether, a Virtual Assistant specializing in Administrative & Creative Support. I help busy entrepreneurs and businesses stay organized, streamline their daily operations, and maintain a clean, modern digital presence. Whether it's managing your inbox, organizing your data, or updating your website, I turn your daily chaos into smooth, efficient solutions.
+            I am an Administrative Assistant and Virtual Assistant focused on helping businesses stay organized and efficient. I support daily operations through email management, data entry, CRM updates, internet research, document organization, and digital tools. My goal is to help business owners save time and focus on growth while I handle the details behind the scenes.
         </p>
         <button class="cv-btn" onclick="downloadCV()">DOWNLOAD MY CV ⬇</button>
     </div>
@@ -1416,19 +2014,19 @@
     <h2>My Skills and Expertise</h2>
     <div class="skills-grid">
         <div class="skill-card">
-            <div class="skill-icon">💻</div>
-            <h3>Frontend Development</h3>
-            <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Responsive Design</li></ul>
+            <div class="skill-icon">✅</div>
+            <h3>Administrative Support</h3>
+            <ul><li>Email Management</li><li>Calendar Management</li><li>Data Entry</li><li>Internet Research</li><li>File Organization</li></ul>
         </div>
         <div class="skill-card">
             <div class="skill-icon">🖥️</div>
-            <h3>Tools & Platforms</h3>
-            <ul><li>VS Code</li><li>PicsArt</li><li>Canva</li><li>AI Tools</li></ul>
+            <h3>Productivity Tools</h3>
+            <ul><li>VS Code</li><li>PicsArt</li><li>Canva</li><li>AI Tools</li><li>Google Workspace</li></ul>
         </div>
         <div class="skill-card">
             <div class="skill-icon">💼</div>
-            <h3>Virtual Assistant</h3>
-            <ul><li>Email Management</li><li>CRM Management</li><li>Data Entry</li><li>Automation</li></ul>
+            <h3>Virtual Assistance</h3>
+            <ul><li>Client Communication</li><li>CRM Management</li><li>Data Entry</li><li>Automation</li><li>Document Management</li></ul>
         </div>
     </div>
 </section>
@@ -1437,6 +2035,71 @@
     <small>FEATURED PROJECTS</small>
     <h2>Some of My Recent Work</h2>
     <div class="projects-grid">
+
+        <!-- Email Management System Project Card -->
+        <div class="em-project-card">
+            <div class="em-cover">
+                <span class="em-cover-bg-text">EMAIL</span>
+                <div class="em-mockup">
+                    <div class="em-mockup-bar">
+                        <div class="em-dot r"></div>
+                        <div class="em-dot y"></div>
+                        <div class="em-dot g"></div>
+                        <span class="em-bar-title">Inbox — Diether Eraldo</span>
+                    </div>
+                    <div style="display:flex;height:130px;">
+                        <div class="em-sidebar">
+                            <div class="em-nav-item active">📥 Inbox <span class="em-nav-count">12</span></div>
+                            <div class="em-nav-item">⭐ Starred</div>
+                            <div class="em-nav-item">📤 Sent</div>
+                            <div class="em-nav-item">🗂️ Labels</div>
+                            <div class="em-nav-item">🗑️ Trash</div>
+                        </div>
+                        <div style="flex:1;overflow:hidden;">
+                            <div class="em-inbox-row unread">
+                                <div class="em-avatar" style="background:#e53e3e;">CL</div>
+                                <div class="em-row-content">
+                                    <div class="em-row-sender">Client — Sarah M.</div>
+                                    <div class="em-row-subject">Project brief update</div>
+                                </div>
+                                <span class="em-label-tag urgent">URGENT</span>
+                            </div>
+                            <div class="em-inbox-row unread">
+                                <div class="em-avatar" style="background:#38a169;">MB</div>
+                                <div class="em-row-content">
+                                    <div class="em-row-sender">Meeting — Boss</div>
+                                    <div class="em-row-subject">Weekly sync confirmed</div>
+                                </div>
+                                <span class="em-label-tag follow">FOLLOW</span>
+                            </div>
+                            <div class="em-inbox-row">
+                                <div class="em-avatar" style="background:#3182ce;">NL</div>
+                                <div class="em-row-content">
+                                    <div class="em-row-sender">Newsletter</div>
+                                    <div class="em-row-subject">Tools roundup - June</div>
+                                </div>
+                                <span class="em-label-tag done">DONE</span>
+                            </div>
+                            <div class="em-inbox-row">
+                                <div class="em-avatar" style="background:#805ad5;">IN</div>
+                                <div class="em-row-content">
+                                    <div class="em-row-sender">Invoice — Supplier</div>
+                                    <div class="em-row-subject">Invoice #2024-089</div>
+                                </div>
+                                <span class="em-label-tag client">CLIENT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span class="em-badge">VA Task</span>
+                <span class="em-tag">Gmail · Labels · Filters</span>
+            </div>
+            <div class="project-info">
+                <h3>Email Management System</h3>
+                <p>Organized inbox workflow with labels, categories, and priority filters for efficient client communication.</p>
+                <button class="project-trigger-btn" data-target="em-modal">VIEW PROJECT</button>
+            </div>
+        </div>
 
         <div class="gd-project-card">
             <div class="gd-cover">
@@ -1488,6 +2151,130 @@
 
     </div>
 </section>
+
+<!-- Email Management Modal -->
+<div id="em-modal" class="project-modal-wrapper">
+    <div class="em-modal-inner">
+        <div class="em-modal-header">
+            <button class="em-close-btn">×</button>
+            <h2>Email Management System</h2>
+            <p>Organized Inbox · Labels · Categories · Priority Filters</p>
+        </div>
+        <div class="em-modal-body">
+            <div class="em-full-mockup">
+                <div class="em-full-topbar">
+                    <span class="em-full-title">📥 Inbox — Diether Eraldo</span>
+                    <span class="em-full-subtitle">12 unread · 3 urgent · All synced</span>
+                </div>
+                <div class="em-layout">
+                    <div class="em-left-sidebar">
+                        <div class="em-sidebar-label">Folders</div>
+                        <div class="em-sidebar-link active">📥 Inbox <span class="cnt">12</span></div>
+                        <div class="em-sidebar-link">⭐ Starred <span class="cnt">4</span></div>
+                        <div class="em-sidebar-link">📤 Sent</div>
+                        <div class="em-sidebar-link">📝 Drafts <span class="cnt">2</span></div>
+                        <div class="em-sidebar-link">🗑️ Trash</div>
+                        <div class="em-divider-line"></div>
+                        <div class="em-sidebar-label">Labels</div>
+                        <div class="em-label-item"><div class="em-label-dot" style="background:#e53e3e;"></div> Urgent</div>
+                        <div class="em-label-item"><div class="em-label-dot" style="background:#38a169;"></div> Client</div>
+                        <div class="em-label-item"><div class="em-label-dot" style="background:#dd6b20;"></div> Follow-Up</div>
+                        <div class="em-label-item"><div class="em-label-dot" style="background:#3182ce;"></div> Done</div>
+                        <div class="em-label-item"><div class="em-label-dot" style="background:#805ad5;"></div> Meeting</div>
+                    </div>
+                    <div class="em-main-panel">
+                        <div class="em-search-bar">
+                            <div class="em-search-input"><span>🔍</span> Search emails…</div>
+                            <div class="em-filter-chips">
+                                <div class="em-chip active">All</div>
+                                <div class="em-chip">Unread</div>
+                                <div class="em-chip">Urgent</div>
+                            </div>
+                        </div>
+                        <div class="em-email-list">
+                            <div class="em-email-item unread">
+                                <div class="em-email-avatar" style="background:#e53e3e;">SM</div>
+                                <div class="em-email-body">
+                                    <div class="em-email-top">
+                                        <span class="em-email-sender">Sarah M. — Client</span>
+                                        <span class="em-pill urgent">Urgent</span>
+                                        <span class="em-email-time">9:14 AM</span>
+                                    </div>
+                                    <div class="em-email-subject">Updated project brief — please review before EOD</div>
+                                    <div class="em-email-preview">Hi Diether, attaching the revised brief. Let me know if you have questions…</div>
+                                </div>
+                            </div>
+                            <div class="em-email-item unread">
+                                <div class="em-email-avatar" style="background:#805ad5;">JR</div>
+                                <div class="em-email-body">
+                                    <div class="em-email-top">
+                                        <span class="em-email-sender">James R. — Manager</span>
+                                        <span class="em-pill meeting">Meeting</span>
+                                        <span class="em-email-time">8:50 AM</span>
+                                    </div>
+                                    <div class="em-email-subject">Weekly sync — confirmed for Thursday 10AM</div>
+                                    <div class="em-email-preview">Calendar invite sent. Agenda: Q2 review, task assignments, blockers…</div>
+                                </div>
+                            </div>
+                            <div class="em-email-item unread">
+                                <div class="em-email-avatar" style="background:#38a169;">AC</div>
+                                <div class="em-email-body">
+                                    <div class="em-email-top">
+                                        <span class="em-email-sender">Acme Corp. — Lead</span>
+                                        <span class="em-pill client">Client</span>
+                                        <span class="em-email-time">Yesterday</span>
+                                    </div>
+                                    <div class="em-email-subject">Onboarding documents — action required</div>
+                                    <div class="em-email-preview">Please complete the attached forms at your earliest convenience…</div>
+                                </div>
+                            </div>
+                            <div class="em-email-item">
+                                <div class="em-email-avatar" style="background:#dd6b20;">FU</div>
+                                <div class="em-email-body">
+                                    <div class="em-email-top">
+                                        <span class="em-email-sender">Follow-Up — Proposal #3</span>
+                                        <span class="em-pill follow">Follow-Up</span>
+                                        <span class="em-email-time">Mon</span>
+                                    </div>
+                                    <div class="em-email-subject">Re: Proposal #3 — awaiting your feedback</div>
+                                    <div class="em-email-preview">Just circling back on the proposal I sent last week…</div>
+                                </div>
+                            </div>
+                            <div class="em-email-item">
+                                <div class="em-email-avatar" style="background:#3182ce;">NL</div>
+                                <div class="em-email-body">
+                                    <div class="em-email-top">
+                                        <span class="em-email-sender">Newsletter — Tools Weekly</span>
+                                        <span class="em-pill done">Done</span>
+                                        <span class="em-email-time">Sun</span>
+                                    </div>
+                                    <div class="em-email-subject">Top 10 productivity tools — June edition</div>
+                                    <div class="em-email-preview">This week's roundup includes Notion, ClickUp, and three new AI integrations…</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="em-modal-desc">
+                A structured email management workflow built to keep a busy inbox organized and responsive.
+                Emails are triaged using color-coded labels — Urgent, Client, Follow-Up, Done, and Meeting —
+                so nothing gets missed and priorities are always clear at a glance. Custom filters auto-sort
+                incoming messages, reducing manual sorting time significantly. This system demonstrates
+                the kind of organized, proactive inbox management I apply as a Virtual Assistant to
+                keep client communications running smoothly.
+            </p>
+            <div class="em-chips">
+                <span class="em-chip-tag">Gmail</span>
+                <span class="em-chip-tag">Label System</span>
+                <span class="em-chip-tag">Priority Filters</span>
+                <span class="em-chip-tag">Inbox Organization</span>
+                <span class="em-chip-tag">VA Task Management</span>
+                <span class="em-chip-tag">Email Triage</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="gd-modal" class="project-modal-wrapper">
     <div class="gd-modal-inner">
@@ -1635,34 +2422,90 @@
     </div>
 </div>
 
+<!-- ══════════════════════════════════════════
+     SERVICES SECTION — VA-focused rewrite
+══════════════════════════════════════════ -->
 <section id="services" class="services">
     <small>WHAT I CAN HELP WITH</small>
     <h2>Services I Offer</h2>
     <div class="services-grid">
         <div class="service-card">
-            <div class="service-icon">🎨</div>
-            <h3>Graphic Design</h3>
-            <p>Eye-catching designs that elevate your brand.</p>
+            <div class="service-icon">📧</div>
+            <h3>Administrative Support</h3>
+            <p>Email and calendar management, scheduling, and day-to-day operational tasks to keep your business running smoothly.</p>
         </div>
         <div class="service-card">
-            <div class="service-icon">✉️</div>
-            <h3>Email Marketing</h3>
-            <p>Email campaigns that engage and convert your audience.</p>
+            <div class="service-icon">📋</div>
+            <h3>Data Entry &amp; Organization</h3>
+            <p>Accurate records, spreadsheet maintenance, and document organization so your data is always clean and accessible.</p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>Research &amp; Lead Generation</h3>
+            <p>Business research, competitor analysis, and prospect list building to support your sales and decision-making.</p>
         </div>
         <div class="service-card">
             <div class="service-icon">📊</div>
             <h3>CRM Management</h3>
-            <p>Manage leads, clients and tasks efficiently.</p>
+            <p>Customer database updates, lead tracking, and pipeline maintenance to keep your client relationships organized.</p>
         </div>
         <div class="service-card">
-            <div class="service-icon">⚙️</div>
-            <h3>Automation</h3>
-            <p>Automate workflows and save time for your business.</p>
+            <div class="service-icon">🎨</div>
+            <h3>Canva Design Support</h3>
+            <p>Basic graphics, branded presentations, social media visuals, and marketing materials using Canva.</p>
         </div>
-        <div class="service-card">
-            <div class="service-icon">🖥️</div>
-            <h3>Web Development</h3>
-            <p>Custom websites built for your business needs.</p>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     WHY WORK WITH ME SECTION
+══════════════════════════════════════════ -->
+<section class="why-section">
+    <small>WHY WORK WITH ME</small>
+    <h2>What Sets Me Apart</h2>
+    <p class="why-subtitle">The qualities that make a great Virtual Assistant aren't just technical — they're about how you show up every single day.</p>
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="why-check">🎯</div>
+            <div class="why-card-text">
+                <h3>Detail-Oriented</h3>
+                <p>I catch the small things before they become big problems. Every task is completed with care and precision.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-check">🗂️</div>
+            <div class="why-card-text">
+                <h3>Organized Workflow</h3>
+                <p>Structured systems, clear documentation, and tidy inboxes. I bring order to even the busiest workflows.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-check">⚡</div>
+            <div class="why-card-text">
+                <h3>Quick Learner</h3>
+                <p>New tools, new platforms, and new processes. I adapt fast and hit the ground running without lengthy ramp-ups.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-check">💬</div>
+            <div class="why-card-text">
+                <h3>Strong Communication</h3>
+                <p>Clear, professional, and timely updates. You'll always know where things stand,  no chasing required.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-check">🖥️</div>
+            <div class="why-card-text">
+                <h3>Tech-Savvy</h3>
+                <p>Comfortable with CRMs, productivity tools, AI tools, and web platforms. I leverage technology to work smarter.</p>
+            </div>
+        </div>
+        <div class="why-card">
+            <div class="why-check">⏰</div>
+            <div class="why-card-text">
+                <h3>Reliable &amp; Deadline-Focused</h3>
+                <p>I treat your deadlines like my own. Consistent, dependable delivery every time, without reminders.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -1680,6 +2523,13 @@
         <div class="contact-left">
             <small>GET IN TOUCH</small>
             <h2>Contact Me</h2>
+
+            <!-- Availability CTA -->
+            <div class="contact-availability-cta">
+                <div class="cta-dot"></div>
+                <p><strong>Available for Administrative Assistant and Virtual Assistant opportunities.</strong> Open to full-time, part-time, and freelance roles.</p>
+            </div>
+
             <div class="contact-item"><span>✉️</span><p>dietheraldo25@gmail.com</p></div>
             <div class="contact-item"><span>📞</span><p>+63 951 975 7764</p></div>
             <div class="contact-item"><span>📍</span><p>Philippines</p></div>
@@ -1721,7 +2571,6 @@
 
                     <div class="envelope-heading-block">
                         <h3 class="envelope-heading">Drop Me a Line</h3>
-    
                     </div>
 
                     <form id="contact-form">
@@ -1798,6 +2647,7 @@ document.getElementById("success-home-trigger").addEventListener("click", functi
         }, 400);
     }
 });
+
 /* Character counter for message textarea */
 (function() {
     var textarea = document.getElementById("env-message");
@@ -1875,11 +2725,13 @@ document.getElementById("success-home-trigger").addEventListener("click", functi
     tag(".skills small, .skills h2", "sa-left");
     tag(".skill-card", null, true);
     tag(".projects small, .projects h2");
-    tag(".project-card, .lib-project-card, .gd-project-card", null, true);
+    tag(".project-card, .lib-project-card, .gd-project-card, .em-project-card", null, true);
     tag(".services small, .services h2");
     tag(".service-card", null, true);
+    tag(".why-section small, .why-section h2, .why-section .why-subtitle", "sa-left");
+    tag(".why-card", null, true);
     tag(".contact-banner", "sa-scale");
-    tag(".contact-left small, .contact-left h2", "sa-left");
+    tag(".contact-left small, .contact-left h2, .contact-availability-cta", "sa-left");
     tag(".contact-right", "sa-right");
 
     /* 5. IntersectionObserver */
@@ -1918,7 +2770,7 @@ document.getElementById("success-home-trigger").addEventListener("click", functi
     document.querySelectorAll(".project-trigger-btn").forEach(function (btn) {
         btn.addEventListener("click", function (e) {
             e.stopPropagation();
-            var card = btn.closest(".project-card, .lib-project-card, .gd-project-card");
+            var card = btn.closest(".project-card, .lib-project-card, .gd-project-card, .em-project-card");
             var targetModalId = btn.getAttribute("data-target");
             
             if (!targetModalId) {
@@ -1944,7 +2796,7 @@ document.getElementById("success-home-trigger").addEventListener("click", functi
         });
     });
 
-    document.querySelectorAll(".gd-close-btn, .lib-close-btn").forEach(function(btn) {
+    document.querySelectorAll(".gd-close-btn, .lib-close-btn, .em-close-btn").forEach(function(btn) {
         btn.addEventListener("click", function(e) {
             e.stopPropagation();
             closeSpotlight();
@@ -2089,7 +2941,6 @@ document.getElementById("success-home-trigger").addEventListener("click", functi
         }, 500);
     }
 
-    /* Target ONLY images inside modal environments */
     const imageSelectors = ".gd-item img, .lib-ss-frame img";
     document.querySelectorAll(imageSelectors).forEach(img => {
         img.addEventListener("click", function(e) {
